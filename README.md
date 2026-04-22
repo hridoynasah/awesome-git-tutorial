@@ -1,95 +1,55 @@
-# Awesome Git Tutorial
+# Awesome Git Tutorial (Beginner + Interactive)
 
 ![Git](https://img.shields.io/badge/Git-Tutorial-F05032?logo=git&logoColor=white)
 ![Level](https://img.shields.io/badge/Level-Beginner-blue)
-![Modules](https://img.shields.io/badge/Modules-3-success)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-555)
+![Modules](https://img.shields.io/badge/Modules-6-success)
+![Style](https://img.shields.io/badge/Style-Hands--On-orange)
 
-Hands-on Git tutorial repository covering setup, first commits, and collaboration workflow.
+A beginner-first, terminal-based Git course with step-by-step labs.
 
-## Overview
+## Learning Path
 
-This repository is organized as three modules:
+Follow these modules in order:
 
-1. Install and configure Git
-2. Initialize a repository and create commits
-3. Work with branches, merge to `main`, and push to remote
+1. [Module 1 - Setup and Git Basics](./modules/MODULE1.md)
+2. [Module 2 - Create Your First Repo and Commits](./modules/MODULE2.md)
+3. [Module 3 - Branching and Everyday Workflow](./modules/MODULE3.md)
+4. [Module 4 - Merge Conflicts (Guided Lab)](./modules/MODULE4.md)
+5. [Module 5 - Remotes and Pulling from Local Repositories](./modules/MODULE5.md)
+6. [Module 6 - Fork, Clone, Contribute, and Open a PR](./modules/MODULE6.md)
 
-The content is designed for practical terminal-first learning with command examples and expected outputs.
+## Who This Is For
 
-## Repository Structure
-
-```text
-awesome-git-tutorial/
-├── MODULE1.md
-├── MODULE2.md
-├── MODULE3.md
-└── README.md
-```
-
-## Modules
-
-### Module 1: Install Git and Configure Identity
-File: `MODULE1.md`
-
-Topics covered:
-- Installing Git on Linux, macOS, and Windows (WSL path shown)
-- Understanding command syntax (`command [options] [arguments]`)
-- Configuring Git identity (`user.name`, `user.email`)
-- Configuration scopes: system, global, local
-- Common configuration updates (`core.editor`, `color.ui`, `init.defaultBranch`)
-
-### Module 2: Initialize a Repo and Make First Commit
-File: `MODULE2.md`
-
-Topics covered:
-- Running `git init` and inspecting `.git`
-- Checking status with `git status`
-- Staging with `git add`
-- Creating commits with `git commit -m`
-- Viewing history with `git log`
-- Working with commit hashes, `git show`, `git diff`, and `git revert`
-
-### Module 3: Branch, Merge, and Push
-File: `MODULE3.md`
-
-Topics covered:
-- Creating and switching branches
-- Publishing a branch to remote
-- Merging feature work into `main`
-- Resolving merge conflicts
-- Pushing merged changes to remote
+- You are new to Git.
+- You want practical commands, not theory only.
+- You want to contribute to other repositories using GitHub pull requests.
 
 ## Prerequisites
 
 - Git installed (`git --version`)
-- A terminal (PowerShell, Bash, or similar)
-- A GitHub account and repository access for remote workflows
+- Terminal access (PowerShell, Bash, or similar)
+- GitHub account (for Module 6)
 
-## Quick Start
+## Suggested Practice Rules
 
-```bash
-git clone git@github.com:hridoynasah/awesome-git-tutorial.git
-cd awesome-git-tutorial
-```
+- Type commands manually. Do not copy all commands at once.
+- After every section, run `git status`.
+- If you get stuck, run `git log --oneline --graph --decorate -n 10`.
 
-Then follow modules in order:
-1. `MODULE1.md`
-2. `MODULE2.md`
-3. `MODULE3.md`
+## Quick Command Safety
 
-## Suggested Practice Flow
+- `git restore --staged <file>`: unstage changes.
+- `git switch <branch>`: switch branches safely.
+- `git pull --rebase`: keep history cleaner for feature branches.
+- Avoid force push unless you know exactly why.
 
-1. Create files and commit by module.
-2. Keep work on a development branch.
-3. Merge into `main` after each module milestone.
-4. Push branch and `main` regularly.
+## Final Outcomes
 
-## Learning Outcomes
+After finishing all modules, you will be able to:
 
-After completing all modules, you should be able to:
-- Configure Git correctly for personal and project use.
-- Create and inspect commits confidently.
-- Use branches for isolated work.
-- Merge safely into `main`.
-- Push local history to a remote repository.
+- Configure Git correctly.
+- Create clear commits.
+- Work with branches confidently.
+- Resolve merge conflicts.
+- Pull from both GitHub and another local repo path.
+- Fork a repository, contribute, and open a pull request.
