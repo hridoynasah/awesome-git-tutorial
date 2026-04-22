@@ -1,238 +1,75 @@
-# Module 2: Initialize a Repo and Make Your First Commit
+# Module 2: Create Your First Repo and Commits
 
-This module walks through creating a Git repository, staging files, committing, and viewing history.
+Goal: initialize a repo, track files, and create useful commit history.
 
-## 1) Initialize a Git repository
+## 1) Create a practice project
 
-Command:
 ```bash
+mkdir git-playground
+cd git-playground
 git init
 ```
-Output:
-```text
-Initialized empty Git repository in D:/WorkSpace/awesome-git-tutorial/.git/
-```
 
-## 2) Verify the repo structure
+Check status:
 
-Command:
-```bash
-ls -a
-```
-Output:
-```text
-.  ..  .git  MODULE1.md  MODULE2.md  README.md
-```
-
-Command:
-```bash
-ls .git
-```
-Output:
-```text
-HEAD
-branches
-config
-description
-hooks
-info
-objects
-refs
-```
-
-## 3) Check repository status
-
-Command:
 ```bash
 git status
 ```
-Output:
-```text
-On branch main
 
-No commits yet
+## 2) Create your first file and stage it
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        MODULE1.md
-        MODULE2.md
-        README.md
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-## 4) Stage files (add to the index)
-
-Staging tells Git which changes should be included in the next commit.
-
-Command:
 ```bash
-git add <path-to-file>
-```
-Output:
-```text
-(no output)
+echo "# Git Playground" > README.md
+git add README.md
+git status
 ```
 
-Example:
+You should see `new file: README.md` under "Changes to be committed".
+
+## 3) Make your first commit
+
+```bash
+git commit -m "Add initial README"
+```
+
+View history:
+
+```bash
+git log --oneline
+```
+
+## 4) Make a second commit
+
+```bash
+echo "Learning Git step by step" >> README.md
+git add README.md
+git commit -m "Add learning note to README"
+```
+
+Inspect what changed:
+
+```bash
+git show --stat
+```
+
+## 5) Practice unstaging and restaging
+
+```bash
+echo "Temporary line" >> README.md
+git add README.md
+git restore --staged README.md
+git status
+```
+
+Now stage and commit properly:
+
 ```bash
 git add README.md
-```
-Output:
-```text
-(no output)
+git commit -m "Add temporary line for practice"
 ```
 
-Verify the staged file:
-```bash
-git status
-```
-Output:
-```text
-On branch main
+## Interactive Checkpoint
 
-No commits yet
-
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        new file:   README.md
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        MODULE1.md
-        MODULE2.md
-```
-
-## 5) Commit changes
-
-A commit is a snapshot of the repository at a point in time. Each commit has a message that explains the change.
-
-Command:
-```bash
-git commit -m "Add README.md"
-```
-Output:
-```text
-[main (root-commit) 9fceb02] Add README.md
- 1 file changed, 1 insertion(+)
- create mode 100644 README.md
-```
-
-Note: `-m` stands for "message".
-
-## 6) View commit history
-
-`git --no-pager log -n 3` prints the most recent commits without paging.
-
-Command:
-```bash
-git --no-pager log -n 3
-```
-Output:
-```text
-commit 9fceb021c6f05a9f2e1e8d3a532b9f3f8d2d2e8d
-Author: Your Name <you@example.com>
-Date:   Tue Jan 19 21:03:00 2026 -0500
-
-    Add README.md
-```
-
-### Pager tips
-
-Git uses a pager (like `less`) automatically for long output.
-
-Keys:
-- Scroll down: `Enter`
-- Scroll up: `b`
-- Search: `/text` then `Enter`
-- Next match: `n`
-- Quit: `q`
-
-Force a pager:
-```bash
-git log | less
-```
-Output:
-```text
-commit 9fceb021c6f05a9f2e1e8d3a532b9f3f8d2d2e8d
-Author: Your Name <you@example.com>
-Date:   Tue Jan 19 21:03:00 2026 -0500
-
-    Add README.md
-```
-
-Disable the pager:
-```bash
-git --no-pager log
-```
-Output:
-```text
-commit 9fceb021c6f05a9f2e1e8d3a532b9f3f8d2d2e8d
-Author: Your Name <you@example.com>
-Date:   Tue Jan 19 21:03:00 2026 -0500
-
-    Add README.md
-```
-
-## 7) Commit hashes (full vs short)
-
-Each commit has a unique 40-character hash. You can safely use the first 7 characters as a shorthand if they are unique in your repo.
-
-Full hash:
-`9fceb021c6f05a9f2e1e8d3a532b9f3f8d2d2e8d`
-Short hash:
-`9fceb02`
-
-View a commit:
-```bash
-git show 9fceb02
-```
-Output:
-```text
-commit 9fceb021c6f05a9f2e1e8d3a532b9f3f8d2d2e8d
-Author: Your Name <you@example.com>
-Date:   Tue Jan 19 21:03:00 2026 -0500
-
-    Add README.md
-
-diff --git a/README.md b/README.md
-new file mode 100644
-index 0000000..e69de29
-```
-
-Checkout a commit (detached HEAD):
-```bash
-git checkout 9fceb02
-```
-Output:
-```text
-Note: switching to '9fceb02'.
-
-You are in 'detached HEAD' state. You can look around, make experimental
-changes and commit them, and you can discard any commits you make in this
-state without impacting any branches by switching back to a branch.
-
-HEAD is now at 9fceb02 Add README.md
-```
-
-Revert a commit:
-```bash
-git revert 9fceb02
-```
-Output:
-```text
-[main 4c2a1f0] Revert "Add README.md"
- 1 file changed, 1 deletion(-)
- delete mode 100644 README.md
-```
-
-Compare commits:
-```bash
-git diff 9fceb02 HEAD
-```
-Output:
-```text
-diff --git a/README.md b/README.md
-deleted file mode 100644
-index e69de29..0000000
-```
+1. Run `git log --oneline -n 3`.
+2. Explain (to yourself) the difference between `git add` and `git commit`.
+3. Run `git status` and verify working tree is clean.
