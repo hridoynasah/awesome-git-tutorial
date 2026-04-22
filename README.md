@@ -1,4 +1,4 @@
-# Awesome Git Tutorial (Beginner + Interactive)
+# Awesome Git Tutorial
 
 ![Git](https://img.shields.io/badge/Git-Tutorial-F05032?logo=git&logoColor=white)
 ![Level](https://img.shields.io/badge/Level-Beginner-blue)
@@ -42,6 +42,10 @@ Follow these modules in order:
 - `git switch <branch>`: switch branches safely.
 - `git pull --rebase`: keep history cleaner for feature branches.
 - Avoid force push unless you know exactly why.
+
+## Contributing
+
+Read the contribution steps in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Final Outcomes
 
