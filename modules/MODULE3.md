@@ -1,141 +1,55 @@
-# Module 3: Branching, Merging, and Pushing to Remote
+# Module 3: Branching and Everyday Workflow
 
-This module explains how to work safely on branches, merge to `main`, and publish your work to a remote repository.
+Goal: create feature branches, merge safely, and understand daily team flow.
 
-## 1) Check your current branch
+## 1) Create a feature branch
 
-Command:
+From your repo:
+
 ```bash
-git branch
-```
-Output:
-```text
-* dev
-  main
+git switch -c feature/add-about
 ```
 
-## 2) Create a feature branch
+## 2) Make changes on the feature branch
 
-Command:
 ```bash
-git switch -c feature/module3
-```
-Output:
-```text
-Switched to a new branch 'feature/module3'
+echo "## About\nThis repo is for Git practice." >> README.md
+git add README.md
+git commit -m "Add About section"
 ```
 
-Alternative (older syntax):
-```bash
-git checkout -b feature/module3
-```
+## 3) Switch back and merge
 
-## 3) Make and commit your changes
-
-Command:
-```bash
-git add MODULE3.md README.md
-git commit -m "Complete module 3 and refresh README"
-```
-Output:
-```text
-[feature/module3 <hash>] Complete module 3 and refresh README
- 2 files changed, <n> insertions(+)
-```
-
-## 4) Push the branch to remote
-
-Command:
-```bash
-git push -u origin feature/module3
-```
-Output:
-```text
-Branch 'feature/module3' set up to track remote branch 'feature/module3' from 'origin'.
-```
-
-The `-u` flag sets upstream so future pushes can use just `git push`.
-
-## 5) Merge branch into main
-
-Command:
 ```bash
 git switch main
-git pull origin main
-git merge feature/module3
-```
-Output:
-```text
-Updating <old>..<new>
-Fast-forward
- MODULE3.md | ...
- README.md  | ...
+git merge feature/add-about
 ```
 
-If your merge is not fast-forward, Git will create a merge commit.
+If there is no conflict, this is usually fast-forward for simple history.
 
-## 6) Push merged changes
+## 4) Delete merged branch
 
-Command:
 ```bash
-git push origin main
-```
-Output:
-```text
-To github.com:<user>/<repo>.git
-   <old>..<new>  main -> main
+git branch -d feature/add-about
 ```
 
-## 7) Resolve conflicts (if needed)
+## 5) Useful branch commands
 
-When both branches edit the same lines, Git stops and marks conflicts.
-
-Command:
 ```bash
-git status
-```
-Output:
-```text
-both modified: <file>
-```
-
-Fix conflict markers in the file:
-```text
-<<<<<<< HEAD
-content from main
-=======
-content from branch
->>>>>>> feature/module3
-```
-
-Then finish merge:
-```bash
-git add <file>
-git commit
-```
-
-## 8) Clean up merged branches
-
-Delete local merged branch:
-```bash
-git branch -d feature/module3
-```
-
-Delete remote branch:
-```bash
-git push origin --delete feature/module3
-```
-
-## 9) Verify final state
-
-Command:
-```bash
+git branch
 git branch -a
-git --no-pager log --oneline -n 10 --graph --decorate
+git log --oneline --graph --decorate -n 10
 ```
-Output:
-```text
-* main
-  dev
-  remotes/origin/main
-```
+
+## Team-friendly branch naming examples
+
+- `feature/user-profile`
+- `fix/login-error`
+- `docs/setup-guide`
+
+## Interactive Checkpoint
+
+1. Create a new branch and commit one small change.
+2. Merge it back to `main`.
+3. Delete the branch after merge.
+4. Confirm with `git branch` that only `main` remains.
